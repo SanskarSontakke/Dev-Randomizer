@@ -78,6 +78,23 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run start`   | Serve the production build     |
 | `npm run lint`    | Run ESLint                     |
 
+## Deploy on Vercel
+
+This app is a stock Next.js App Router project with no server, no database,
+and no required environment variables, so it deploys to
+[Vercel](https://vercel.com) with zero configuration:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/SanskarSontakke/Dev-Randomizer)
+
+Or manually:
+
+1. Import the repository at [vercel.com/new](https://vercel.com/new).
+2. Keep the default Next.js build settings (`npm run build`, output handled
+   automatically).
+3. Deploy — no environment variables are required. See
+   [`.env.example`](.env.example) for the one optional variable
+   (`NEXT_PUBLIC_SITE_URL`) that overrides the auto-detected metadata URL.
+
 ## Project structure
 
 ```

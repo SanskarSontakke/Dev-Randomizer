@@ -16,11 +16,34 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+// Resolves to the real deployment URL on Vercel (stable production domain first,
+// falling back to the per-deployment preview URL), or localhost otherwise.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
+
+const title = "Dev Randomizer";
+const description =
+  "Generate random strings, UUIDs, lorem ipsum, colors, placeholder images, and SVG patterns for testing and prototyping.";
+
 export const metadata: Metadata = {
-  title: "Dev Randomizer",
-  description:
-    "Generate random strings, UUIDs, lorem ipsum, colors, placeholder images, and SVG patterns for testing and prototyping.",
-  metadataBase: new URL("https://dev-randomizer.example.com"),
+  title,
+  description,
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    title,
+    description,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+  },
 };
 
 export const viewport: Viewport = {
